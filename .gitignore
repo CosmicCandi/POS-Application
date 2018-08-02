@@ -32,3 +32,4 @@ local.properties
 *.war
 
 *emptyFile
+/target/
