@@ -1,6 +1,6 @@
 package com.fdmgroup.pos.tests;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -12,12 +12,11 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.fdmgroup.pos.classes.Basket;
 import com.fdmgroup.pos.classes.LineItem;
 import com.fdmgroup.pos.classes.Trikke;
-import com.fdmgroup.pos.config.PosConfig;
 
 public class BasketTest {
 
@@ -39,7 +38,7 @@ public class BasketTest {
 
 	@Before
 	public void setUp() throws Exception {
-		context = new AnnotationConfigApplicationContext(PosConfig.class);
+		context = new ClassPathXmlApplicationContext("springContext.xml");
 		basket = (Basket)context.getBean("basket");
 		lineItem = (LineItem)context.getBean("lineItem");
 		lineItem2 = (LineItem)context.getBean("lineItem");
@@ -53,7 +52,6 @@ public class BasketTest {
 		
 		lineItem.setProduct(newTrikke);
 		lineItem.setQuantity(10);
-		
 		
 		lineItem2.setProduct(trikke2);
 		lineItem2.setQuantity(10);
